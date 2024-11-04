@@ -10,3 +10,10 @@ Funcionalidades:
  - Visualizar saldo;
  - Visualizar extrato;
  ...
+
+Rodando o projeto:
+ - Instale o JDK;
+ - Baixe os arquivos;
+ - Dentro da pasta "Projeto";
+ - Compile os Arquivos Java com o comando "javac *.java", em algum terminal;
+ - Execute o Programa com "java Main".
