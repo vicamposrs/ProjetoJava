@@ -1,16 +1,16 @@
 abstract class Conta {
     // Atributos
-    private String titular; // Criar uma classe cliente que será o Titular
+    private Cliente titular; // Criar uma classe cliente que será o Titular
     private double saldo;
 
     // Construtor
-    public Conta(String titular, double saldoInicial) {
+    public Conta(Cliente titular, double saldoInicial) {
         this.titular = titular;
         this.saldo = saldoInicial;
     }
 
     // Getters e Setters 
-    public String getTitular() {
+    public Cliente getTitular() {
         return titular;
     }
 
@@ -27,7 +27,7 @@ abstract class Conta {
     public abstract void depositar(double valor);
 
     public void exibirInformacoes() {
-        System.out.println("Titular: " + titular);
+        System.out.println("Titular: " + titular.getNome());
         System.out.println("Saldo: " + saldo);
     }
 }
