@@ -1,9 +1,6 @@
-package entities;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import entities.enums.TipoTransacao;
 
 public class Transacao {
 	private TipoTransacao tipo;
