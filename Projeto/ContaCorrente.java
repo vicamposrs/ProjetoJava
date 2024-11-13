@@ -1,9 +1,13 @@
-class ContaCorrente extends Conta {
+package entities;
+
+import entities.enums.TipoTransacao;
+
+public class ContaCorrente extends Conta {
     // Atributos
     private double taxaDeOperacao = 1.50; // Taxa fixa para sacar
 
     // Construtor
-    public ContaCorrente(String titular, double saldoInicial) {
+    public ContaCorrente(Cliente titular, double saldoInicial) {
         super(titular, saldoInicial);
     }
 
@@ -14,6 +18,7 @@ class ContaCorrente extends Conta {
         if (getSaldo() >= valorComTaxa) {
             setSaldo(getSaldo() - valorComTaxa);
             System.out.println("Saque de R$ " + valor + " realizado com sucesso! Taxa: R$ " + taxaDeOperacao);
+            extrato.add(new Transacao(TipoTransacao.SAQUE,valor,this));
         } else {
             System.out.println("Saldo insuficiente para saque.");
         }
@@ -23,5 +28,6 @@ class ContaCorrente extends Conta {
     public void depositar(double valor) {
         setSaldo(getSaldo() + valor);
         System.out.println("Depósito de R$ " + valor + " realizado com sucesso!");
+        extrato.add(new Transacao(TipoTransacao.DEPOSITO,valor,this));
     }
 }
