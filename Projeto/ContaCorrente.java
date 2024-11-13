@@ -1,6 +1,3 @@
-package entities;
-
-import entities.enums.TipoTransacao;
 
 public class ContaCorrente extends Conta {
     // Atributos
