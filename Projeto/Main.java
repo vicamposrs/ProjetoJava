@@ -1,9 +1,24 @@
+package application;
+
+import java.util.Date;
+import java.util.Locale;
+
+import entities.Cliente;
+import entities.Conta;
+import entities.ContaCorrente;
+import entities.ContaPoupanca;
+
 public class Main {
     public static void main(String[] args) {
+    	
+    	Locale.setDefault(Locale.US);
         // -- Testes de Contas correntes e Poupança -- //
-
-        Conta contaCorrente = new ContaCorrente("João Silva", 1000.0);
-        Conta contaPoupanca = new ContaPoupanca("Maria Oliveira", 2000.0);
+    	Cliente clienteA = new Cliente("João Silva", "11111111111111",new Date(10/10/1999),"aa");
+    	Cliente clienteB = new Cliente("Maria Oliveira","23154679842563", new Date(12/9/2000),"Rua aaaa");
+    	
+    	
+        Conta contaCorrente = new ContaCorrente(clienteA, 1000.0);
+        Conta contaPoupanca = new ContaPoupanca(clienteB, 2000.0);
 
         System.out.println("Informações da Conta Corrente:");
         contaCorrente.exibirInformacoes();
@@ -19,5 +34,11 @@ public class Main {
         // Casting necessário para acessar método específico da ContaPoupanca
         ((ContaPoupanca) contaPoupanca).aplicarRendimentoMensal();
         contaPoupanca.exibirInformacoes();
+        
+        System.out.println();
+        contaCorrente.exibirExtrato();
+        
+        System.out.println();
+        contaPoupanca.exibirExtrato();
     }
 }
