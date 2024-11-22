@@ -1,4 +1,3 @@
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -36,7 +35,9 @@ public class Transacao {
 		{
 		case DEPOSITO:
 			return dataFormatada + " - " + contaOrigem.getTitular().getNome() + " depositou R$%.2f".formatted(valor);
-		case SAQUE:
+		case SAQUE_CORRENTE:
+			return dataFormatada + " - " + contaOrigem.getTitular().getNome() + " sacou R$%.2f".formatted(valor)  +" e teve R$%.2f de taxa".formatted(((ContaCorrente) contaOrigem).getTaxa()) ;
+		case SAQUE_POUPANCA:
 			return dataFormatada + " - " + contaOrigem.getTitular().getNome() + " sacou R$%.2f".formatted(valor);
 		case TRANSFERENCIA_ORIGEM:
 			return dataFormatada + " - " + contaOrigem.getTitular().getNome() + " transferiu R$%.2f".formatted(valor) + " para " + contaDestino.getTitular().getNome() ;
