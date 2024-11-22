@@ -1,11 +1,12 @@
+import entities.enums.TipoTransacao;
 
 public class ContaPoupanca extends Conta {
     // Atributos
     private double taxaDeRendimento = 0.005; // Rendimento de 0.5% por mês
 
     // Construtor
-    public ContaPoupanca(Cliente titular, double saldoInicial) {
-        super(titular, saldoInicial);
+    public ContaPoupanca(Cliente titular,String numeroConta, double saldoInicial,String senha) {
+        super(titular, numeroConta,saldoInicial,senha);
     }
 
     // Métodos
@@ -21,7 +22,7 @@ public class ContaPoupanca extends Conta {
         if (getSaldo() >= valor) {
             setSaldo(getSaldo() - valor);
             System.out.println("Saque de R$ " + valor + " realizado com sucesso!");
-            extrato.add(new Transacao(TipoTransacao.SAQUE,valor,this));
+            extrato.add(new Transacao(TipoTransacao.SAQUE_POUPANCA,valor,this));
         } else {
             System.out.println("Saldo insuficiente para saque.");
         }
