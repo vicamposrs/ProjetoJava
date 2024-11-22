@@ -1,11 +1,10 @@
-
 public class ContaCorrente extends Conta {
     // Atributos
     private double taxaDeOperacao = 1.50; // Taxa fixa para sacar
 
     // Construtor
-    public ContaCorrente(Cliente titular, double saldoInicial) {
-        super(titular, saldoInicial);
+    public ContaCorrente(Cliente titular,String numeroConta, double saldoInicial,String senha) {
+        super(titular, numeroConta,saldoInicial,senha);
     }
 
     // Métodos
@@ -15,7 +14,7 @@ public class ContaCorrente extends Conta {
         if (getSaldo() >= valorComTaxa) {
             setSaldo(getSaldo() - valorComTaxa);
             System.out.println("Saque de R$ " + valor + " realizado com sucesso! Taxa: R$ " + taxaDeOperacao);
-            extrato.add(new Transacao(TipoTransacao.SAQUE,valor,this));
+            extrato.add(new Transacao(TipoTransacao.SAQUE_CORRENTE,valor,this));
         } else {
             System.out.println("Saldo insuficiente para saque.");
         }
@@ -26,5 +25,11 @@ public class ContaCorrente extends Conta {
         setSaldo(getSaldo() + valor);
         System.out.println("Depósito de R$ " + valor + " realizado com sucesso!");
         extrato.add(new Transacao(TipoTransacao.DEPOSITO,valor,this));
+    }
+
+
+    public double getTaxa()
+    {
+    	return taxaDeOperacao;
     }
 }
